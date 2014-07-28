@@ -1,6 +1,6 @@
-class fact {
+class MyApp {
     public static void main(String[] args) {
-        System.out.println("Hello World!"); // Display the strin
 	System.out.println(UsefulMethods.factorial(10));
+	System.out.println(UsefulMethods.cipher("test", 3));
     }
 }
