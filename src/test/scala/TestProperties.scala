@@ -2,15 +2,6 @@ import org.scalacheck._
 import org.scalacheck.Prop._
 import Gen._
 
-object Factorial {
-	def factorial(n: Int): Long = {
-	if (n<=1)
-		1
-	else
-		n*factorial(n-1)
-	}
-}
-
 object CipherProperties extends Properties("cipher properties") {
 	property("roundtrip") = forAll { (a:String, b:Int) =>
 	UsefulMethods.cipher(UsefulMethods.cipher(a,b),-b) == a }
@@ -26,15 +17,8 @@ object CipherProperties extends Properties("cipher properties") {
 
 object TestProperties {
 
-	val propPositive = forAll { (n: Int) =>
-	UsefulMethods.factorial(n) > 0 }
-
-	val propRecur = forAll(Gen.choose(0,20)) { (n: Int) =>
-	UsefulMethods.factorial(n) == Factorial.factorial(n) }
-
 	def main(args: Array[String]) {
 		println("Hello world!")
 		CipherProperties.check
-//		propRecur.check
 	}
 }

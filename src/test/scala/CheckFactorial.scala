@@ -13,6 +13,7 @@ def factorial(n: Int): Long = {
 		n*factorial(n-1)
 }
 
+
 //val propRecur = forAll(Gen.choose(0,1000)) { a: Int =>
 //	UsefulMethods.factorial(a) == factorial(a) }
 
