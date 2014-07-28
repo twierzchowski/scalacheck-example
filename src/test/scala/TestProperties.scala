@@ -34,7 +34,7 @@ object TestProperties {
 
 	def main(args: Array[String]) {
 		println("Hello world!")
-		cipherProperties.check
+		CipherProperties.check
 //		propRecur.check
 	}
 }
