@@ -9,17 +9,6 @@ public class UsefulMethods {
         return fact;
     }
 
-    public static String isTraingle(int a, int b, int c) {
-        if ((a+b>c) || (a+c>b) || (b+c>a)) {
-            if (a==b && b==c)
-		return "Equilateral";
-	    return "Triangle";
-        }
-        else {
-            return "Not a triangle!";
-        }
-    }
-
     public static String cipher(String msg, int shift){
         String s = "";
     	int len = msg.length();
