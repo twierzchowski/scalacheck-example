@@ -3,17 +3,13 @@ import org.scalacheck.Prop._
 import Gen._
 
 object CipherProperties extends Properties("cipher properties") {
-	
 
 //	property("roundtrip") = forAll { (a:String, b:Int) =>
 //	UsefulMethods.cipher(UsefulMethods.cipher(a,b),-b) == a }
 
-	def LowerAlphaStr: Gen[String] =
-		listOf(alphaLowerChar).map(_.mkString).suchThat(_.forall(_.isLetter))
-
 	val newGenerator: Gen[(String, Int)] = for {
-		str <- LowerAlphaStr
-		shift <- Gen.choose(-10000,10000)
+		str <- listOf(alphaLowerChar).map(_.mkString) //.suchThat(_.forall(_.isLetter))
+		shift <- Gen.choose(Int.MinValue, Int.MaxValue)
 	} yield (str, shift)
 
 	def isAlphaString(s:String): Boolean = {
@@ -28,14 +24,12 @@ object CipherProperties extends Properties("cipher properties") {
 	}
 	
 	property("roundtrip alfastrings") = forAll(newGenerator) { input: (String, Int) =>
-	UsefulMethods.cipher(UsefulMethods.cipher(input._1,input._2),-input._2) == input._1 
+	collect(input) { UsefulMethods.cipher(UsefulMethods.cipher(input._1,input._2),-input._2) == input._1 }
 	}
 }
 
 object TestProperties {
-
 	def main(args: Array[String]) {
-		println("Hello world!")
 		CipherProperties.check
 	}
 }
