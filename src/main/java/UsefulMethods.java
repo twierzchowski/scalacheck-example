@@ -17,9 +17,6 @@ public class UsefulMethods {
 	    if(c>='a' && c<='z') {
 		s += (char)(((msg.charAt(x) - 'a' + (shift%26)+26)%26)+'a');
 	    }
-	    else if (c>='A' && c<='Z') {
-		s += (char)(((msg.charAt(x) - 'A' + (shift%26)+26)%26)+'A');
-	    }
 	    else
 		return "";
         }
